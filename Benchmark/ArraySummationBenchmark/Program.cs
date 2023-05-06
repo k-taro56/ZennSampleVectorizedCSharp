@@ -1,4 +1,9 @@
-﻿using BenchmarkDotNet.Attributes;
+﻿// MIT License
+// Refer to LICENSE.txt for more information.
+
+// https://zenn.dev/k-taro56/articles/vetcorized-csharp-array-summation
+
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
