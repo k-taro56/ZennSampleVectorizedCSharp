@@ -49,14 +49,20 @@ public class Benchmark
     [Benchmark]
     public int VectorizedIntrinsicHorizontalAdd()
     {
-        return VectorizedSum(data);
+        return VectorizedIntrinsicHorizontalAdd(data);
     }
 
-    public static int VectorizedSum(ReadOnlySpan<int> span)
+     [Benchmark]
+    public int VectorizedByteOffset()
     {
+        return VectorizedByteOffset(data);
+    }
+    
+    public static int VectorizedIntrinsicHorizontalAdd(ReadOnlySpan<int> span)
+    {
+        int sum = 0;
         nuint index = 0;
         nuint length = (nuint)span.Length;
-        int sum = 0;
         ref int reference = ref MemoryMarshal.GetReference(span);
 
         if (Vector256.IsHardwareAccelerated && (nuint)Vector256<int>.Count <= length)
@@ -81,6 +87,44 @@ public class Benchmark
         for (; index < length; index++)
         {
             sum += Unsafe.Add(ref reference, index);
+        }
+
+        return sum;
+    }
+
+    public static int VectorizedByteOffset(ReadOnlySpan<int> span)
+    {
+        int sum = 0;
+        nuint byteOffset = 0;
+        nuint byteLength = (nuint)span.Length * sizeof(int);
+        ref int intReference = ref MemoryMarshal.GetReference(span);
+        ref byte byteReference = ref Unsafe.As<int, byte>(ref intReference);
+
+        if (Vector256.IsHardwareAccelerated && (nuint)Vector256<byte>.Count <= byteLength)
+        {
+            nuint oneVectorAwayFromLast = byteLength - (nuint)Vector256<byte>.Count;
+            Vector256<int> sum256 = Vector256<int>.Zero;
+
+            do
+            {
+                Vector256<byte> vector = Vector256.LoadUnsafe(ref byteReference, byteOffset);
+                sum256 += Unsafe.As<Vector256<byte>, Vector256<int>>(ref vector);
+                byteOffset += (nuint)Vector256<byte>.Count;
+            } while (byteOffset <= oneVectorAwayFromLast);
+
+            sum = sum256[0];
+            sum += sum256[1];
+            sum += sum256[2];
+            sum += sum256[3];
+            sum += sum256[4];
+            sum += sum256[5];
+            sum += sum256[6];
+            sum += sum256[7];
+        }
+
+        for (; byteOffset < byteLength; byteOffset += sizeof(int))
+        {
+            sum += Unsafe.AddByteOffset(ref intReference, byteOffset);
         }
 
         return sum;
