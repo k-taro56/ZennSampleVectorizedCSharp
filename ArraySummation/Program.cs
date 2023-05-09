@@ -26,20 +26,21 @@ public class Program
     public static int VectorizedSum(ReadOnlySpan<int> span)
     {
         // eax
+        int sum = 0;
+
+        // edx
         nuint index = 0;
 
-        // edx = span.Length
-        // rdx
+        // r8d = span.Length
+        // r8
         nuint length = (nuint)span.Length;
 
-        // r8d
-        int sum = 0;
         // rcx
         ref int reference = ref MemoryMarshal.GetReference(span);
 
         if (Vector256.IsHardwareAccelerated && (nuint)Vector256<int>.Count <= length)
         {
-            // r8
+            // rax
             nuint oneVectorAwayFromLast = length - (nuint)Vector256<int>.Count;
             // ymm0
             Vector256<int> sum256 = Vector256<int>.Zero;
