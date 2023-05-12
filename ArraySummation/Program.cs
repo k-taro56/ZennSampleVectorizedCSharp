@@ -55,14 +55,23 @@ public class Program
             // span.Length - Vector256<int>.Count を変数に用意しておく必要がある。
             while (index <= oneVectorAwayFromLast);
 
-            sum = sum256[0];
-            sum += sum256[1];
-            sum += sum256[2];
-            sum += sum256[3];
-            sum += sum256[4];
-            sum += sum256[5];
-            sum += sum256[6];
-            sum += sum256[7];
+            // スカラー値に変換。
+            // 組み込み関数を使うよりも高速。
+
+            Vector128<int> sum256upper = sum256.GetUpper();
+
+            // 複合代入ではなく、ただの代入に最適化される。
+            sum += sum256upper[0];
+            sum += sum256upper[1];
+            sum += sum256upper[2];
+            sum += sum256upper[3];
+
+            Vector128<int> sum256lower = sum256.GetLower();
+
+            sum += sum256lower[0];
+            sum += sum256lower[1];
+            sum += sum256lower[2];
+            sum += sum256lower[3];
         }
 
         for (; index < length; index++)
