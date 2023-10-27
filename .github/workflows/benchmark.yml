@@ -27,13 +27,13 @@ jobs:
         run: ls -la
 
       - name: Run array summation benchmark
-        run: cd ZennSampleVectorizedCSharp/Benchmark/ArraySummationBenchmark && dotnet run -c Release --exporters json --filter '*'
+        run: cd Benchmark/ArraySummationBenchmark && dotnet run -c Release --exporters json --filter '*'
 
       - name: Store array summation benchmark result
         uses: rhysd/github-action-benchmark@v1
         with:
           tool: 'benchmarkdotnet'
-          output-file-path: ZennSampleVectorizedCSharp/Benchmark/ArraySummationBenchmark/BenchmarkDotNet.Artifacts/results/ArraySummationBenchmark.Benchmark-report-full-compressed.json
+          output-file-path: Benchmark/ArraySummationBenchmark/BenchmarkDotNet.Artifacts/results/ArraySummationBenchmark.Benchmark-report-full-compressed.json
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
           benchmark-data-dir-path: ""
