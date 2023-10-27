@@ -16,7 +16,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        BenchmarkRunner.Run<Benchmark>();
+        BenchmarkRunner.Run<Benchmark>(null!, args);
     }
 }
 
