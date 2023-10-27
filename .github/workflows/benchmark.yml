@@ -23,9 +23,6 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: List directory contents
-        run: ls -la
-
       - name: Run array summation benchmark
         run: cd Benchmark/ArraySummationBenchmark && dotnet run -c Release --exporters json --filter '*'
 
