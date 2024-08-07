@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1704677413114,
+  "lastUpdate": 1722996432083,
   "repoUrl": "https://github.com/k-taro56/ZennSampleVectorizedCSharp",
   "entries": {
     "Benchmark": [
@@ -864,6 +864,150 @@ window.BENCHMARK_DATA = {
             "value": 410.37680937449136,
             "unit": "ns",
             "range": "± 2.0854034065874893"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "121674121+k-taro56@users.noreply.github.com",
+            "name": "Kawahara Shotaro",
+            "username": "k-taro56"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9ac346327f10cca8f081e77f206726b649f25042",
+          "message": "Merge pull request #21 from k-taro56/dependabot/nuget/BenchmarkDotNet-0.14.0\n\nbuild(deps): Bump BenchmarkDotNet from 0.13.12 to 0.14.0",
+          "timestamp": "2024-08-07T10:58:54+09:00",
+          "tree_id": "b5696385499d72ebc09d8b93e15eef41655a8941",
+          "url": "https://github.com/k-taro56/ZennSampleVectorizedCSharp/commit/9ac346327f10cca8f081e77f206726b649f25042"
+        },
+        "date": 1722996431220,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "ArraySummationBenchmark.Benchmark.General(Length: 1)",
+            "value": 0.6403590483734241,
+            "unit": "ns",
+            "range": "± 0.005708166772710521"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.Vectorized(Length: 1)",
+            "value": 1.262144983080881,
+            "unit": "ns",
+            "range": "± 0.006363618656321078"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedIntrinsicHorizontalAdd(Length: 1)",
+            "value": 0.9128422279443059,
+            "unit": "ns",
+            "range": "± 0.005405060027307599"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedByteOffset(Length: 1)",
+            "value": 0.9106363255817157,
+            "unit": "ns",
+            "range": "± 0.0023707415273484978"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.General(Length: 10)",
+            "value": 3.5079947976129398,
+            "unit": "ns",
+            "range": "± 0.012764563709273504"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.Vectorized(Length: 10)",
+            "value": 2.964280697206656,
+            "unit": "ns",
+            "range": "± 0.0022527189327659547"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedIntrinsicHorizontalAdd(Length: 10)",
+            "value": 2.367852578560511,
+            "unit": "ns",
+            "range": "± 0.00694132210118533"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedByteOffset(Length: 10)",
+            "value": 2.781873406576259,
+            "unit": "ns",
+            "range": "± 0.008617117432914663"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.General(Length: 100)",
+            "value": 40.504262908299765,
+            "unit": "ns",
+            "range": "± 0.04316074316623965"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.Vectorized(Length: 100)",
+            "value": 6.653931926190853,
+            "unit": "ns",
+            "range": "± 0.24215560641840436"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedIntrinsicHorizontalAdd(Length: 100)",
+            "value": 6.622017154097557,
+            "unit": "ns",
+            "range": "± 0.14478491644750718"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedByteOffset(Length: 100)",
+            "value": 7.153129857778549,
+            "unit": "ns",
+            "range": "± 0.20057661693307766"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.General(Length: 1000)",
+            "value": 342.49371759096783,
+            "unit": "ns",
+            "range": "± 0.9358647092656426"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.Vectorized(Length: 1000)",
+            "value": 47.386074078934534,
+            "unit": "ns",
+            "range": "± 0.15538340245119053"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedIntrinsicHorizontalAdd(Length: 1000)",
+            "value": 47.6344471693039,
+            "unit": "ns",
+            "range": "± 0.16544228519556828"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedByteOffset(Length: 1000)",
+            "value": 47.235919479529066,
+            "unit": "ns",
+            "range": "± 0.03109605488124751"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.General(Length: 10000)",
+            "value": 3112.3959222521103,
+            "unit": "ns",
+            "range": "± 5.768393840523783"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.Vectorized(Length: 10000)",
+            "value": 428.7205032280513,
+            "unit": "ns",
+            "range": "± 0.81031763502107"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedIntrinsicHorizontalAdd(Length: 10000)",
+            "value": 430.5631485303243,
+            "unit": "ns",
+            "range": "± 0.5164832375518958"
+          },
+          {
+            "name": "ArraySummationBenchmark.Benchmark.VectorizedByteOffset(Length: 10000)",
+            "value": 399.75293820699056,
+            "unit": "ns",
+            "range": "± 1.1022420350088826"
           }
         ]
       }
